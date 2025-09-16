@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #007bff; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { padding: 30px; background: #f8f9fa; border-radius: 0 0 8px 8px; }
+        .verify-button { 
+            display: inline-block; 
+            background: #28a745; 
+            color: white; 
+            padding: 15px 30px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .footer { text-align: center; color: #666; font-size: 12px; margin-top: 20px; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Appointment Booking!</h1>
+        </div>
+        
+        <div class="content">
+            <h2>Hello {{ user_name }}! </h2>
+            
+            <p>Thank you for registering with our appointment booking system! We're excited to have you on board.</p>
+            
+            <p>To complete your registration and start using our platform, please verify your email address by clicking the button below:</p>
+            
+            <div style="text-align: center;">
+                <a href="{{ verification_url }}" class="verify-button">
+                    ✅ Verify My Email Address
+                </a>
+            </div>
+            
+            <div class="warning">
+                <strong>⏰ Important:</strong> This verification link will expire in 24 hours for security reasons.
+            </div>
+            
+            <p><strong>What happens after verification?</strong></p>
+            <ul>
+                <li>You can log in to your account</li>
+                <li>Access all platform features</li>
+                {% if user_type == 'business' %}
+                <li>Set up your business profile</li>
+                <li>Add services and business hours</li>
+                <li>Start accepting appointments</li>
+                {% else %}
+                <li>Browse and book appointments with local businesses</li>
+                <li>Manage your appointments and profile</li>
+                {% endif %}
+            </ul>
+            
+            <p>If you didn't create this account, please ignore this email.</p>
+            
+            <p>Welcome aboard!</p>
+            <p><strong>The Appointment Booking Team</strong></p>
+        </div>
+        
+        <div class="footer">
+            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>If you have any questions, please contact our support team.</p>
+        </div>
+    </div>
+</body>
+</html>

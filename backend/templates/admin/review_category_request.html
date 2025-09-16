@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% load static %}{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% load static %}{% static 'admin/css/forms.css' %}">
+</head>
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+<div id="container">
+    <div id="header">
+        <div id="branding">
+            <h1 id="site-name">Django administration</h1>
+        </div>
+        <div id="user-tools">
+            Welcome, <strong>{{ user.first_name|default:user.username }}</strong>.
+            <a href="{% url 'admin:logout' %}">Log out</a>
+        </div>
+    </div>
+
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">Home</a> &rsaquo;
+        <a href="{% url 'admin:businesses_categoryrequest_changelist' %}">Category requests</a> &rsaquo;
+        Review Request
+    </div>
+
+    <div id="content" class="colM">
+        <h1>{{ title }}</h1>
+
+        <!-- Request Information -->
+        <div class="module">
+            <h2>Request Information</h2>
+            <div class="form-row">
+                <div>
+                    <strong>Business Name:</strong> {{ category_request.business_name }}<br>
+                    <strong>Requested by:</strong> {{ category_request.requested_by.first_name }} {{ category_request.requested_by.last_name }} ({{ category_request.requested_by.email }})<br>
+                    <strong>Request Date:</strong> {{ category_request.created_at }}<br>
+                    <strong>Current Status:</strong> <span style="color: orange; font-weight: bold;">{{ category_request.get_status_display }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Details -->
+        <div class="module">
+            <h2>Requested Category Details</h2>
+            <div class="form-row">
+                <div>
+                    <strong>Category Name:</strong> {{ category_request.requested_category_name }}<br>
+                    <strong>Description:</strong><br>
+                    <p style="margin-left: 20px; padding: 10px; background: #f8f9fa; border-left: 3px solid #007bff;">
+                        {{ category_request.requested_description }}
+                    </p>
+                    <strong>Service Examples:</strong><br>
+                    <p style="margin-left: 20px; padding: 10px; background: #f8f9fa; border-left: 3px solid #28a745;">
+                        {{ category_request.service_examples }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Form -->
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="module">
+                <h2>Review Decision</h2>
+                
+                <div class="form-row">
+                    <div>
+                        <label for="action">Action:</label>
+                        <select name="action" id="action" required onchange="toggleFields()">
+                            <option value="">Select an action...</option>
+                            <option value="approve">✅ Approve - Create New Category</option>
+                            <option value="merge">🔄 Merge with Existing Category</option>
+                            <option value="reject">❌ Reject Request</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Approve Fields -->
+                <div id="approve-fields" style="display: none;">
+                    <div class="form-row">
+                        <div>
+                            <label for="category_name">Category Name:</label>
+                            <input type="text" name="category_name" id="category_name" value="{{ category_request.requested_category_name }}" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="icon_class">Icon Class:</label>
+                            <input type="text" name="icon_class" id="icon_class" value="fas fa-store" placeholder="e.g., fas fa-store, fas fa-car, fas fa-home">
+                            <p class="help">Font Awesome icon class. Examples: fas fa-store, fas fa-car, fas fa-utensils, fas fa-home</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="color">Category Color:</label>
+                            <input type="color" name="color" id="color" value="#007bff">
+                            <p class="help">Color for the category badge</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Merge Fields -->
+                <div id="merge-fields" style="display: none;">
+                    <div class="form-row">
+                        <div>
+                            <label for="merge_category">Merge with existing category:</label>
+                            <select name="merge_category" id="merge_category">
+                                <option value="">Select existing category...</option>
+                                {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.name }} ({{ category.business_count }} businesses)</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="admin_notes">Admin Notes:</label>
+                        <textarea name="admin_notes" id="admin_notes" cols="40" rows="4" placeholder="Optional notes for the business owner..."></textarea>
+                        <p class="help">These notes will be included in the email sent to the business owner</p>
+                    </div>
+                </div>
+
+                <div class="submit-row">
+                    <input type="submit" value="Process Request" class="default">
+                    <a href="{% url 'admin:businesses_categoryrequest_changelist' %}" class="button cancel-link">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function toggleFields() {
+    const action = document.getElementById('action').value;
+    const approveFields = document.getElementById('approve-fields');
+    const mergeFields = document.getElementById('merge-fields');
+    
+    // Hide all fields first
+    approveFields.style.display = 'none';
+    mergeFields.style.display = 'none';
+    
+    // Show relevant fields based on action
+    if (action === 'approve') {
+        approveFields.style.display = 'block';
+    } else if (action === 'merge') {
+        mergeFields.style.display = 'block';
+    }
+}
+</script>
+
+</body>
+</html>

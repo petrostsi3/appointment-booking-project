@@ -1,0 +1,819 @@
+/* Base responsiveness improvements */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* Core appointment system styles */
+.appointment-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.appointment-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.appointment-item:last-child {
+  border-bottom: none;
+}
+
+.time-slot-btn {
+  min-width: 120px;
+  margin-bottom: 5px;
+}
+
+.service-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+/* Layout */
+footer {
+  margin-top: auto;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Form */
+.form-control:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Business logo container */
+.business-logo-container {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.business-logo-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Calendar */
+.calendar-day {
+  min-height: 120px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.calendar-day:hover {
+  background-color: #f8f9fa;
+}
+
+.calendar-day-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #495057;
+}
+
+.calendar-day-content {
+  overflow-y: auto;
+  max-height: 90px;
+}
+
+.calendar-appointment {
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendar-appointment:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Status colors */
+.status-pending {
+  background-color: #fff3cd;
+  border-left: 3px solid #ffc107;
+  color: #856404;
+}
+
+.status-confirmed {
+  background-color: #d4edda;
+  border-left: 3px solid #28a745;
+  color: #155724;
+}
+
+.status-cancelled {
+  background-color: #f8d7da;
+  border-left: 3px solid #dc3545;
+  color: #721c24;
+}
+
+.status-completed {
+  background-color: #cce5ff;
+  border-left: 3px solid #007bff;
+  color: #004085;
+}
+
+/* Card */
+.card {
+  border: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  font-weight: 600;
+}
+
+/* Button */
+.btn {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+}
+
+/* Loading states */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* MOBILE RESPONSIVE IMPROVEMENTS */
+@media (max-width: 768px) {
+  /* Container improvements */
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  
+  /* Header improvements for mobile */
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+  
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  /* Better touch targets */
+  .btn {
+    min-height: 48px;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  
+  .btn-sm {
+    min-height: 40px;
+    padding: 8px 16px;
+  }
+  
+  /* Better form inputs on mobile */
+  .form-control {
+    font-size: 16px;
+    padding: 12px 16px;
+    min-height: 48px;
+    border-radius: 8px;
+  }
+  
+  .form-select {
+    font-size: 16px;
+    padding: 12px 16px;
+    min-height: 48px;
+  }
+  
+  /* Better spacing on mobile */
+  .py-4 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .py-5 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  /* Stack cards better on mobile */
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  /* Better appointment cards on mobile */
+  .appointment-item {
+    padding: 20px 15px;
+    border-bottom: 1px solid #eee;
+    background: white;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  /* Better calendar on mobile */
+  .calendar-day {
+    min-height: 100px;
+    font-size: 0.9rem;
+    padding: 6px;
+  }
+  
+  .calendar-appointment {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+    margin-bottom: 3px;
+  }
+  
+  /* Better time slot buttons */
+  .time-slot-btn {
+    min-width: 100px;
+    margin: 4px 2px;
+    font-size: 0.9rem;
+  }
+  
+  /* Business cards mobile improvements */
+  .business-card {
+    margin-bottom: 1rem;
+  }
+  
+  .business-logo-container {
+    height: 120px;
+  }
+  
+  /* Modal improvements for mobile */
+  .modal-dialog {
+    margin: 1rem 0.5rem;
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+  }
+  
+  /* Table improvements for mobile */
+  .table-responsive {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .table td, .table th {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+  }
+  
+  /* Navigation improvements */
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  
+  .nav-tabs .nav-link {
+    white-space: nowrap;
+    min-width: 100px;
+  }
+  
+  /* Alert improvements */
+  .alert {
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hero section mobile */
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .display-5 {
+    font-size: 1.75rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 375px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .time-slot-btn {
+    min-width: 80px;
+    font-size: 0.8rem;
+  }
+  
+  .calendar-day {
+    min-height: 80px;
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+  
+  .appointment-item {
+    padding: 15px 10px;
+  }
+}
+
+/* iOS  fixes */
+.form-control, .form-select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .form-control, .form-select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Skeleton loading states */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Print styles */
+@media print {
+  .btn, .navbar, .modal, .alert {
+    display: none !important;
+  }
+  
+  .card {
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid #000;
+  }
+  
+  .btn {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* FIX: Password Requirements Styling */
+.password-requirements {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e9ecef;
+  margin-top: 8px;
+}
+
+.requirements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.requirement-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+}
+
+.requirement-icon {
+  font-weight: bold;
+  font-size: 14px;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.requirement-text {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.requirement-item.valid .requirement-icon {
+  color: #28a745;
+}
+
+.requirement-item.valid .requirement-text {
+  color: #28a745;
+}
+
+.requirement-item.invalid .requirement-icon {
+  color: #dc3545;
+}
+
+.requirement-item.invalid .requirement-text {
+  color: #dc3545;
+}
+
+/* Register page requirements -> static list */
+.password-requirements-register {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #007bff;
+  margin-bottom: 1rem;
+}
+
+.password-requirements-register .requirement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 2px 0;
+  margin-bottom: 4px;
+}
+
+.password-requirements-register .requirement-icon {
+  color: #007bff;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.password-requirements-register .requirement-text {
+  font-size: 14px;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.password-requirements-register .requirement-item:last-child {
+  margin-bottom: 0;
+}
+
+/* FIX: Header dropdown positioning */
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1030;
+}
+
+.user-dropdown-custom .dropdown-menu {
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 8px;
+  margin-top: 8px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  z-index: 1050;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.dropdown-item {
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 2px 0;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  transform: translateX(4px);
+}
+
+/* Ensure dropdown doesn't interfere with content */
+.navbar-nav .dropdown {
+  position: static;
+}
+
+@media (min-width: 992px) {
+  .navbar-nav .dropdown {
+    position: relative;
+  }
+}
+
+/* Mobile dropdown positioning */
+@media (max-width: 991.98px) {
+  .user-dropdown-custom .dropdown-menu {
+    background-color: #495057;
+    margin-top: 0;
+    box-shadow: none;
+    border-radius: 0;
+    position: static;
+    float: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: none;
+  }
+}
+
+/* FIX: for Browse page sort dropdown */
+.business-list-container {
+  position: relative;
+  z-index: 1;
+}
+
+.sort-dropdown-container {
+  position: relative;
+  z-index: 1050;
+}
+
+.sort-dropdown-container .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  z-index: 1051 !important;
+  min-width: 200px;
+  margin-top: 0.125rem;
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.375rem;
+}
+
+/* FIX: Business Management 3-dots dropdown */
+.business-card .dropdown {
+  position: relative;
+  z-index: 1050;
+}
+
+.business-card .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  z-index: 1051 !important;
+  min-width: 180px;
+  margin-top: 0.125rem;
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.375rem;
+  transform: none !important;
+}
+
+/* Ensure parent containers don't interfere dropdowns */
+.card,
+.card-body,
+.row,
+.col,
+.container,
+.container-fluid {
+  overflow: visible !important;
+}
+
+.business-card,
+.h-100 {
+  overflow: visible !important;
+}
+
+/* FIX: dropdown positioning in grids */
+.dropdown {
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown.show {
+  z-index: 1051;
+}
+
+.dropdown-menu.show {
+  display: block !important;
+  position: absolute !important;
+  z-index: 1052 !important;
+  opacity: 1;
+  visibility: visible;
+  transform: none !important;
+  min-width: 160px;
+}
+
+/* FIX: Dropdown toggles*/
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.dropdown-toggle:empty::after {
+  margin-left: 0;
+}
+
+/* FIX: Filter sidebar */
+.filter-sidebar {
+  z-index: 100;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: fixed !important;
+    top: auto !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    z-index: 1055 !important;
+    transform: none !important;
+    margin-top: 0.5rem;
+  }
+  
+  .dropdown.show .dropdown-menu {
+    display: block !important;
+  }
+}
+
+/* FIX: business management page */
+.business-management-container .dropdown-menu {
+  position: absolute !important;
+  z-index: 1060 !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* FIX: Nested dropdowns */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+}
+
+.sticky-top {
+  z-index: 1020;
+}
+
+.navbar {
+  z-index: 1030;
+}
+
+.modal {
+  z-index: 1055;
+}
+
+.modal-backdrop {
+  z-index: 1050;
+}
+
+/* FIX: Bootstrap dropdown */
+.dropdown-menu[data-bs-popper] {
+  position: absolute !important;
+  top: 100% !important;
+  left: auto !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  margin-top: 0.125rem;
+}
+
+/*  show dropdown when active */
+.dropdown.show .dropdown-menu,
+.btn-group.show .dropdown-menu {
+  display: block !important;
+  position: absolute !important;
+  z-index: 1000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translate(0, 0) !important;
+}
+
+.dropdown-menu {
+  will-change: auto !important;
+  transform: none !important;
+}
+
+/*FIX: dropdown animation */
+.dropdown-menu.fade {
+  transition: opacity 0.15s linear;
+}
+
+.dropdown-menu.fade:not(.show) {
+  opacity: 0;
+}
+
+.dropdown-menu.fade.show {
+  opacity: 1;
+}

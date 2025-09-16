@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #dc3545; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background: #f8f9fa; }
+        .appointment-details { background: white; padding: 15px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>❌ Appointment Cancelled</h1>
+        </div>
+        <div class="content">
+            <h2>Hello {{ business_owner }},</h2>
+            <p>An appointment has been cancelled.</p>
+            
+            <div class="appointment-details">
+                <h3>👤 Client: {{ client_name }}</h3>
+                <p><strong>✂️ Service:</strong> {{ service_name }}</p>
+                <p><strong>📅 Date:</strong> {{ appointment_date }}</p>
+                <p><strong>🕐 Time:</strong> {{ appointment_time }}</p>
+                <p><strong>💰 Price:</strong> €{{ service_price }}</p>
+            </div>
+            
+            <p>{{ cancellation_reason }}</p>
+            <p>You can view your updated schedule in your Business Dashboard.</p>
+        </div>
+    </div>
+</body>
+</html>
