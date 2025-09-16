@@ -26,7 +26,7 @@ I wanted to solve a real problem that small businesses face - managing appointme
 
 **Backend:**
 - Django & Django REST Framework (Python)
-- PostgreSQL database
+- SQLite database
 - JWT authentication
 - Email notifications
 
