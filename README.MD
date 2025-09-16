@@ -52,7 +52,7 @@ You'll need these installed:
    cd appointment_system
    ```
 
-2. **Set up a virtual environment (seriously, do this):**
+2. **Set up a virtual environment:**
    ```bash
    python -m venv venv
    venv\Scripts\activate # On Windows
