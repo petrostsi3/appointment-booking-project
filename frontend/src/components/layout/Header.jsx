@@ -16,7 +16,7 @@ const Header = () => {
     <Navbar bg="dark" variant="dark" expand="lg" className="shadow-sm" fixed={false}>
       <Container>
         <Navbar.Brand as={Link} to="/" className="fw-bold">
-          <span className="d-none d-sm-inline">AppointmentBook</span>
+          <span className="d-none d-sm-inline">Appointment Booking</span>
           <span className="d-inline d-sm-none">AppBook</span>
         </Navbar.Brand>
         
