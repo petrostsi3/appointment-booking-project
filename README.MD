@@ -1,5 +1,11 @@
 # Appointment Booking System
 
+## Copyright & Usage Notice
+**© 2025 Petros Tsitsonis. All rights reserved.**
+
+*This project is for demonstration purposes only. All code and intellectual property are owned by the author. Commercial use, modification, or distribution requires written permission.*
+
+
 ## What This Project Actually Does
 
 This is basically a web app where businesses can let customers book appointments online. Think of it like when you book a haircut or doctor's visit online, but for any kind of business.
