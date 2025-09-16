@@ -142,5 +142,6 @@ The backend exposes a RESTful API. Main endpoints:
 
 
 ## Future Improvements
+- Production deployment
 - Mobile app
 - Advanced analytics
