@@ -3,7 +3,7 @@
 ## Copyright & Usage Notice
 **© 2025 Petros Tsitsonis. All rights reserved.**
 
-*This project is for demonstration purposes only. All code and intellectual property are owned by the author. Commercial use, modification, or distribution requires written permission.*
+*This project is for demonstration purposes only. Commercial use, modification, or distribution requires written permission by the author.*
 
 
 ## What This Project Actually Does
