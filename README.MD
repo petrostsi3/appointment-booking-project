@@ -48,7 +48,7 @@ You'll need these installed:
 
 1. **Clone and navigate to the project:**
    ```bash
-   git clone https://github.com/petrostsi3/appointment-booking
+   git clone https://github.com/petrostsi3/appointment-booking-project
    cd appointment_system
    ```
 
