@@ -248,9 +248,10 @@ def generate_available_time_slots(business, service, date):
             is_slot_in_future = True
             if date == today:
                 slot_start_time_only = current_time.time()
-                if slot_start_time_only <= current_time_only:
+                current_time_with_buffer = (now + timedelta(minutes=30)).time()
+                if slot_start_time_only <= current_time_with_buffer:
                     is_slot_in_future = False
-                    logger.info(f"   Slot {current_time.time()} is in the past (current time: {current_time_only})")
+                    logger.info(f"   Slot {current_time.time()} is too soon (current time + buffer: {current_time_with_buffer})")
             if is_slot_in_future:
                 is_available = True
                 for appointment in existing_appointments:
