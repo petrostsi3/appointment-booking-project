@@ -149,7 +149,8 @@ class BusinessSerializer(serializers.ModelSerializer):
             'category', 'category_details', 'category_name', 'category_icon', 'category_color',
             'is_active', 'created_at']
         read_only_fields = ['owner_details', 'business_hours', 'services', 'logo_url', 'owner', 
-                           'category_details', 'category_name', 'category_icon', 'category_color']
+                           'category_details', 'category_name', 'category_icon', 'category_color',
+            'is_active', 'created_at']
         
 
     def get_logo_url(self, obj):
