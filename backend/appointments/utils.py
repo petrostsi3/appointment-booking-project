@@ -210,6 +210,9 @@ Best regards,
 
 def generate_available_time_slots(business, service, date):
     logger.info(f"GENERATING SLOTS FOR: {business.name} on {date}")
+    now = timezone.now()
+    today = now.date()
+    current_time_only = now.time()
     day_of_week = date.weekday()
     try:
         business_hours = BusinessHours.objects.get(business=business, day=day_of_week)
@@ -242,21 +245,28 @@ def generate_available_time_slots(business, service, date):
         current_time = period_start
         while current_time + service_duration <= period_end:
             slot_end_time = current_time + service_duration
-            is_available = True
-            for appointment in existing_appointments:
-                appointment_start = datetime.combine(date, appointment.start_time)
-                appointment_end = datetime.combine(date, appointment.end_time)
-                if (current_time < appointment_end and slot_end_time > appointment_start):
-                    is_available = False
-                    logger.info(f"    Slot {current_time.time()} - {slot_end_time.time()} conflicts with existing appointment")
-                    break
-            if is_available:
-                slot = {
-                    'start_time': current_time.strftime('%H:%M'),
-                    'end_time': slot_end_time.strftime('%H:%M'),
-                    'period_name': period.period_name or f'Period {period.id}'}
-                available_slots.append(slot)
-                logger.info(f"    Available: {slot['start_time']} - {slot['end_time']}")
+            is_slot_in_future = True
+            if date == today:
+                slot_start_time_only = current_time.time()
+                if slot_start_time_only <= current_time_only:
+                    is_slot_in_future = False
+                    logger.info(f"   Slot {current_time.time()} is in the past (current time: {current_time_only})")
+            if is_slot_in_future:
+                is_available = True
+                for appointment in existing_appointments:
+                    appointment_start = datetime.combine(date, appointment.start_time)
+                    appointment_end = datetime.combine(date, appointment.end_time)
+                    if (current_time < appointment_end and slot_end_time > appointment_start):
+                        is_available = False
+                        logger.info(f"    Slot {current_time.time()} - {slot_end_time.time()} conflicts with existing appointment")
+                        break
+                if is_available:
+                    slot = {
+                        'start_time': current_time.strftime('%H:%M'),
+                        'end_time': slot_end_time.strftime('%H:%M'),
+                        'period_name': period.period_name or f'Period {period.id}'}
+                    available_slots.append(slot)
+                    logger.info(f"    Available: {slot['start_time']} - {slot['end_time']}")
             current_time += slot_increment
     logger.info(f"\nSUMMARY: Generated {len(available_slots)} available slots")
     return available_slots
