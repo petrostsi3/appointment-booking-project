@@ -423,7 +423,7 @@ const BusinessProfile = () => {
         setMode('edit');
         setLogoPreview(result.logo_url);
         // Update URL to edit mode
-        navigate(`/business/profile?edit=${result.id}`, { replace: true });
+        //navigate(`/business/profile?edit=${result.id}`, { replace: true });
       }
       setLogoFile(null);
       setSaving(false);
